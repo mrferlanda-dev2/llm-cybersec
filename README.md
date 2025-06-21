@@ -23,7 +23,7 @@ ollama pull nomic-embed-text
 ## Docker (Easy Installation)
 
 ```bash
-./startup.sh
+./start.sh
 ```
 
 ## Vanilla
@@ -119,6 +119,14 @@ Options:
 ### RAGAS Evaluation
 
 Evaluate the RAG system using RAGAS metrics (requires Google API key):
+
+![Evaluation Result](assets/ragas.png)
+
+**Key Metrics:**
+- **Semantic Similarity:** 0.89 ± 0.04 - High consistency in response relevance
+- **Context Recall:** 0.68 ± 0.30 - Good context retrieval with some variability  
+- **Factual Correctness:** 0.50 ± 0.26 - Mixed accuracy, room for improvement
+- **Faithfulness:** 0.64 ± 0.37 - Generally faithful to context with occasional deviations
 
 ```bash
 cd eval
