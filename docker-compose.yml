@@ -1,0 +1,67 @@
+services:
+  # Ollama service for LLM inference
+  ollama:
+    image: ollama/ollama:latest
+    container_name: cybersec-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0:11434
+    restart: unless-stopped
+    # GPU support for your RTX 4060
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  # Model setup service - runs once to pull models
+  ollama-setup:
+    image: ollama/ollama:latest
+    container_name: cybersec-ollama-setup
+    depends_on:
+      - ollama
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+    command: >
+      sh -c "
+        echo 'Waiting for Ollama server to be ready...' &&
+        while ! curl -s http://ollama:11434/api/version > /dev/null; do
+          sleep 2;
+        done &&
+        echo 'Ollama server is ready!' &&
+        echo 'Pulling llama3.2:latest...' &&
+        ollama pull llama3.2:latest &&
+        echo 'Pulling nomic-embed-text...' &&
+        ollama pull nomic-embed-text &&
+        echo 'All models pulled successfully!'
+      "
+    restart: "no"  # Run only once
+
+  # Cybersecurity LLM Application
+  cybersec-app:
+    build: .
+    container_name: cybersec-app
+    image: mrferlanda/cybersec-llm:latest
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./db:/app/db
+      - ./.env:/app/.env:ro
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY:-}
+      - OLLAMA_BASE_URL=http://ollama:11434
+    depends_on:
+      ollama-setup:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
+    driver: local 

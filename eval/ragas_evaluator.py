@@ -12,7 +12,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from ragas.metrics import LLMContextRecall, Faithfulness, FactualCorrectness, SemanticSimilarity
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyBcusZhBBXGURz-Nc7-OOKRO3bzwwhxu5Y"
+os.environ["GOOGLE_API_KEY"] = "keyhere"
 
 def evaluate_ragas(dataset):
     llm = LangchainLLMWrapper(

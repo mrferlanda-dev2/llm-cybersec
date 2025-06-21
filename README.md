@@ -2,6 +2,8 @@
 
 A Retrieval-Augmented Generation (RAG) chatbot specialized in cybersecurity, built with Streamlit and CLI interfaces. The system uses FAISS vector store for document retrieval and Ollama for local LLM inference.
 
+![Streamlit Demo](assets/streamlit.gif)
+
 ## 📋 Prerequisites
 
 - Python 3.8+

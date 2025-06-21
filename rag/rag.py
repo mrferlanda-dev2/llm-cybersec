@@ -30,7 +30,8 @@ class RAGRetriever:
         """
         self.vector_store_path = vector_store_path
         self.embedding_model = embedding_model
-        self.base_url = base_url
+        # If OLLAMA_BASE_URL is set, use it, otherwise use the base_url
+        self.base_url = os.getenv('OLLAMA_BASE_URL', base_url)
         
         # Initialize embeddings
         self.embeddings = OllamaEmbeddings(model=embedding_model, base_url=base_url)
