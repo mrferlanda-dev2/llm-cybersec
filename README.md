@@ -20,6 +20,14 @@ ollama pull nomic-embed-text
 
 ## 🚀 Installation
 
+## Docker (Easy Installation)
+
+```bash
+./startup.sh
+```
+
+## Vanilla
+
 1. **Clone the repository**
 ```bash
 git clone <repository-url>
