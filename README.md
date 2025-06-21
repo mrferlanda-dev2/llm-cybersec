@@ -6,7 +6,7 @@ A Retrieval-Augmented Generation (RAG) chatbot specialized in cybersecurity, bui
 
 ## 📋 Prerequisites
 
-- Python 3.8+
+- Python 3.10+
 - [Ollama](https://ollama.ai/) installed and running
 - Required Ollama models:
   - `llama3.2:latest` (for chat)
