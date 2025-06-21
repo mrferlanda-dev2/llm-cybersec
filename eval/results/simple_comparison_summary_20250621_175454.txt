@@ -1,0 +1,10 @@
+SIMPLE RAG vs NON-RAG COMPARISON
+==================================================
+Model: llama3.2:latest
+Date: 2025-06-21 17:54:54
+Questions Compared: 79
+
+RESULTS:
+WITH RAG: 49/79 = 0.620
+WITHOUT RAG: 46/79 = 0.582
+IMPROVEMENT: +0.038 (+3.8%)
