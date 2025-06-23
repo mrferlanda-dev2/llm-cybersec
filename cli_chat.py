@@ -50,8 +50,8 @@ class CLIChatbot:
             # Load existing chat history
             self.chat_history = self.memory.load_chat_history(user_id)
             
-            print("✅ All components initialized successfully!")
-            print(f"📜 Loaded {len(self.chat_history)} previous messages")
+            print("All components initialized successfully!")
+            print(f"Loaded {len(self.chat_history)} previous messages")
             
         except Exception as e:
             print(f"Failed to initialize chatbot: {e}")
@@ -60,7 +60,7 @@ class CLIChatbot:
     def display_chat_history(self, limit: int = 5):
         """Display recent chat history."""
         if not self.chat_history:
-            print("📝 No previous conversation history.")
+            print("No previous conversation history.")
             return
         
         print(f"\nRecent conversation (last {limit} messages):")
@@ -77,7 +77,7 @@ class CLIChatbot:
     def chat_loop(self):
         """Main chat loop."""
         print("\n" + "="*60)
-        print("🔒 CyberSecurity AI Assistant")
+        print("CyberSecurity AI Assistant")
         print("Type 'quit', 'exit', or 'bye' to end the conversation")
         print("Type 'history' to see recent conversation")
         print("Type 'clear' to start a new conversation")
@@ -153,11 +153,11 @@ class CLIChatbot:
         """Clear the current conversation."""
         self.chat_history = []
         self.memory.clear_session(self.user_id)
-        print("🗑️ Conversation cleared. Starting fresh!")
+        print("Conversation cleared. Starting fresh!")
     
     def show_system_status(self):
         """Display system status information."""
-        print("\n🔧 System Status:")
+        print("\nSystem Status:")
         print("-" * 30)
         
         # Vector store info
@@ -169,7 +169,7 @@ class CLIChatbot:
         
         # Database info
         db_info = self.memory.get_database_status()
-        print(f"💾 Database: {db_info['status']}")
+        print(f"Database: {db_info['status']}")
         if db_info['status'] == 'connected':
             print(f"Total messages: {db_info['total_messages']}")
             print(f"Unique sessions: {db_info['unique_sessions']}")
