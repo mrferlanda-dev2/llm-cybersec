@@ -104,7 +104,7 @@ with st.sidebar:
     st.header("Debug Panel")
     
     if components_loaded:
-        st.success("✅ All components loaded successfully!")
+        st.success("All components loaded successfully!")
         
         # Vector Store Info
         if st.button("Check Vector Store Status"):
