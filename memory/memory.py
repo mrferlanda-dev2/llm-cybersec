@@ -65,7 +65,7 @@ class ChatMemory:
                     role = 'user' if message.type == 'human' else 'assistant'
                     messages.append({'role': role, 'content': message.content})
             
-            print(f"✅ Loaded {len(messages)} messages from database")
+            print(f"Loaded {len(messages)} messages from database")
             return messages
             
         except Exception as e:
